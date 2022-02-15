@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List</title>
+    <style>
+        * {
+            padding: 0%;
+            margin: 0%;
+            box-sizing: border-box;
+        }
+        
+        .main {
+            width: 400px;
+            /* height: 300px; */
+            /* border: 1px solid red; */
+            border-radius: 8px;
+            margin: 250px auto;
+            background-color: black;
+            color: white;
+        }
+        
+        .List {
+            text-align: center;
+            font-size: 2em;
+            color: white;
+            font-weight: bold;
+            padding: 20px 0px;
+            cursor: pointer;
+        }
+        
+        #input {
+            margin-left: 20px;
+            width: 250px;
+            height: 50px;
+            text-align: center;
+            border: none;
+            border: 2px solid black;
+            border-radius: 10px;
+            margin-right: 15px;
+        }
+        
+        #input,
+        text {
+            border-radius: 10px;
+            font-size: 2em;
+            border: 2px solid black;
+            border: none;
+            color: black;
+        }
+        
+        #btn {
+            padding: 15px 10px;
+            font-size: 25px;
+            border: none;
+            border-radius: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 5px;
+        }
+        
+        #btn:hover {
+            background: black;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        #textcontent,
+        p {
+            margin-left: 10px;
+            font-size: 1.5em;
+            text-align: left;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1 class="List">To Do List</h1>
+        <div class="container">
+            <input type="text" id="input"><button id="btn">ADD</button>
+            <div id="textcontent"></div>
+        </div>
+    </div>
+    <script>
+        const btn = document.getElementById("btn");
+        const input = document.getElementById("input");
+        const textcontent = document.getElementById("textcontent");
+
+        btn.addEventListener('click', () => {
+            var paragraph = document.createElement('p');
+            paragraph.innerText = input.value;
+            textcontent.appendChild(paragraph);
+            input.value = "";
+            paragraph.addEventListener('click', () => {
+                paragraph.style.textDecoration = "line-through";
+            })
+            paragraph.addEventListener('dblclick', () => {
+                textcontent.removeChild(paragraph);
+            });
+
+        });
+    </script>
+</body>
+
+</html>
